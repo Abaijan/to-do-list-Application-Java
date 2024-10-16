@@ -9,8 +9,9 @@
     android:orientation="vertical"
     tools:context=".AddNoteActivity">
 <include
-    android:id="@+id/header"
-    layout="@layout/title"/>
+    android:id="@+id/header_note"
+    layout="@layout/header"
+    />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,16 +24,40 @@
         style="@style/editText"
         android:hint="Введите описание"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Выберите время"
-        style="@style/editText"
-        />
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        >
+        <TextView
+        android:id="@+id/selectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/fab_margin"
+            />
+        <ImageButton
+            android:id="@+id/selectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/bottom_sheet_behavior"
+            android:src="@drawable/baseline_calendar_month_24"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            />
+
+    </LinearLayout>
 
     <Button
         android:layout_width="232dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:layout_gravity="center"
-        android:text="Добавить" />
+        android:background="@drawable/button_radius"
+        android:text="@string/add" />
 </LinearLayout>
