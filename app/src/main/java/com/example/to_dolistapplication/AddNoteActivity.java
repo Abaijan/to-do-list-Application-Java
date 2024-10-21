@@ -5,7 +5,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,6 +21,12 @@ public class AddNoteActivity extends AppCompatActivity {
     ImageButton imageButton;
     ImageButton selectDateBtn;
     TextView selectDate;
+
+
+    Button addBtn;
+    EditText title;
+    EditText description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +71,27 @@ public class AddNoteActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        addBtn = findViewById(R.id.AddNote);
+        title = findViewById(R.id.title);
+        description = findViewById(R.id.description);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = title.getText().toString();
+                String descr = description.getText().toString();
+                String date = selectDate.getText().toString();
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("name", name);
+                resultIntent.putExtra("description",descr);
+                resultIntent.putExtra("date", date);
+                setResult(RESULT_OK, resultIntent);
+                finish();
+
+
+            }
+        });
+
     }
 
 }
